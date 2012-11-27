@@ -133,7 +133,6 @@
     <ClInclude Include="..\WOLFSRC\WOLFVER.H" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\WOLFSRC\CONTIGSC.C" />
     <ClCompile Include="..\WOLFSRC\DETECT.C" />
     <ClCompile Include="..\WOLFSRC\ID_CA.C" />
     <ClCompile Include="..\WOLFSRC\ID_IN.C" />
@@ -144,7 +143,6 @@
     <ClCompile Include="..\WOLFSRC\ID_VH.C" />
     <ClCompile Include="..\WOLFSRC\ID_VL.C" />
     <ClCompile Include="..\WOLFSRC\MUNGE.C" />
-    <ClCompile Include="..\WOLFSRC\OLDSCALE.C" />
     <ClCompile Include="..\WOLFSRC\WL_ACT1.C" />
     <ClCompile Include="..\WOLFSRC\WL_ACT2.C" />
     <ClCompile Include="..\WOLFSRC\WL_AGENT.C" />
