@@ -1,5 +1,7 @@
 // ID_GLOB.H
 
+#ifndef ID_HEADS_H
+#define ID_HEADS_H
 
 //#include <ALLOC.H>
 #include <CTYPE.H>
@@ -121,3 +123,4 @@ extern	byte		fontcolor,backcolor;
 
 #define SETFONTCOLOR(f,b) fontcolor=f;backcolor=b;
 
+#endif
