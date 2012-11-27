@@ -990,25 +990,28 @@ boolean			JoyPadPresent;
 //
 
 // DEBUG - put names in prototypes
-void IN_Startup(void),IN_Shutdown(void)
+void IN_Startup(void)
+{
+}
+void IN_Shutdown(void)
 {
 }
 void IN_Default(boolean gotit,ControlType in)
 {
 }
-void IN_SetKeyHook(void (*)())
+void IN_SetKeyHook(void (*hook)())
 {
 }
 void IN_ClearKeysDown(void)
 {
 }
-void IN_ReadCursor(CursorInfo *)
+void IN_ReadCursor(CursorInfo* info)
 {
 }
-void IN_ReadControl(int,ControlInfo *)
+void IN_ReadControl(int player,ControlInfo* info)
 {
 }
-void IN_SetControlType(int,ControlType)
+void IN_SetControlType(int player,ControlType type)
 {
 }
 void IN_GetJoyAbs(word joy,word *xp,word *yp)
@@ -1032,25 +1035,32 @@ void IN_AckBack(void)
 
 boolean IN_UserInput(longword delay)
 {
+	return false;
 }
 char IN_WaitForASCII(void)
 {
+	return 0;
 }
 ScanCode IN_WaitForKey(void)
 {
+	return sc_None;
 }
 word IN_GetJoyButtonsDB(word joy)
 {
+	return 0;
 }
-byte* IN_GetScanName(ScanCode)
+byte* IN_GetScanName(ScanCode code)
 {
+	return NULL;
 }
 
 byte IN_MouseButtons (void)
 {
+	return 0;
 }
 byte IN_JoyButtons (void)
 {
+	return 0;
 }
 
 void INL_GetJoyDelta(word joy,int *dx,int *dy)
@@ -1061,4 +1071,5 @@ void IN_StartAck(void)
 }
 boolean IN_CheckAck (void)
 {
+	return false;
 }
