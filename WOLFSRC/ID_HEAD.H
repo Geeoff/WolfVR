@@ -1,4 +1,6 @@
 // ID_HEAD.H
+#ifndef ID_HEAD_H
+#define ID_HEAD_H 
 
 
 #define	EXTENSION	"WLF"
@@ -13,8 +15,8 @@
 
 #include "VERSION.H"
 
-//typedef	enum	{false,true}	boolean;
-typedef bool					boolean;
+typedef	enum	{false,true}	boolean;
+//typedef bool					boolean;
 typedef	unsigned	char		byte;
 typedef	unsigned	int			word;
 typedef	unsigned	long		longword;
@@ -33,3 +35,4 @@ typedef	struct
 
 void	Quit (char *error);		// defined in user program
 
+#endif
