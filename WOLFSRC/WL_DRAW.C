@@ -49,8 +49,8 @@ fixed	mindist		= MINDIST;
 // math tables
 //
 int			pixelangle[MAXVIEWWIDTH];
-long		far finetangent[FINEANGLES/4];
-fixed 		far sintable[ANGLES+ANGLES/4],far *costable = sintable+(ANGLES/4);
+long		finetangent[FINEANGLES/4];
+fixed 		sintable[ANGLES+ANGLES/4],*costable = sintable+(ANGLES/4);
 
 //
 // refresh variables
@@ -397,7 +397,7 @@ long		postsource;
 unsigned	postx;
 unsigned	postwidth;
 
-void	near ScalePost (void)		// VGA version
+void	ScalePost (void)		// VGA version
 {
 	asm	mov	ax,SCREENSEG
 	asm	mov	es,ax
@@ -1135,7 +1135,7 @@ void DrawScaleds (void)
 			obj->active = true;
 			TransformActor (obj);
 			if (!obj->viewheight)
-				continue;						// too close or far away
+				continue;						// too close or away
 
 			visptr->viewx = obj->viewx;
 			visptr->viewheight = obj->viewheight;

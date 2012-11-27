@@ -1,26 +1,26 @@
 // ID_GLOB.H
 
 
-#include <ALLOC.H>
+//#include <ALLOC.H>
 #include <CTYPE.H>
 #include <DOS.H>
 #include <ERRNO.H>
 #include <FCNTL.H>
 #include <IO.H>
-#include <MEM.H>
+//#include <MEM.H>
 #include <PROCESS.H>
 #include <STDIO.H>
 #include <STDLIB.H>
 #include <STRING.H>
 #include <SYS\STAT.H>
-#include <VALUES.H>
-#include <DIR.H>
+//#include <VALUES.H>
+//#include <DIR.H>
 #define __ID_GLOB__
 #include "VERSION.H"
 
 //--------------------------------------------------------------------------
 
-extern	char		far signon;
+extern	char		signon;
 
 #define	introscn	signon
 

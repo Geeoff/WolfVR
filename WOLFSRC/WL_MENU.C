@@ -24,7 +24,7 @@ void CP_ReadThis(void);
 #endif
 #endif
 
-char far endStrings[9][80]=
+char endStrings[9][80]=
 {
 #ifndef SPEAR
 	{"Dost thou wish to\nleave with such hasty\nabandon?"},
@@ -59,7 +59,7 @@ CP_iteminfo
 	NewItems={NM_X,NM_Y,4,2,24};
 
 #pragma warn -sus
-CP_itemtype far
+CP_itemtype 
 MainMenu[]=
 {
 #ifdef JAPAN
@@ -100,7 +100,7 @@ MainMenu[]=
 #endif
 },
 
-far SndMenu[]=
+SndMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -131,7 +131,7 @@ far SndMenu[]=
 #endif
 },
 
-far CtlMenu[]=
+CtlMenu[]=
 {
 #ifdef JAPAN
 	{0,"",0},
@@ -153,7 +153,7 @@ far CtlMenu[]=
 #pragma warn +sus
 
 #ifndef SPEAR
-far NewEmenu[]=
+NewEmenu[]=
 {
 #ifdef JAPAN
 #ifdef JAPDEMO
@@ -226,7 +226,7 @@ far NewEmenu[]=
 #endif
 
 
-far NewMenu[]=
+NewMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -241,7 +241,7 @@ far NewMenu[]=
 #endif
 },
 
-far LSMenu[]=
+LSMenu[]=
 {
 	{1,"",0},
 	{1,"",0},
@@ -255,7 +255,7 @@ far LSMenu[]=
 	{1,"",0}
 },
 
-far CusMenu[]=
+CusMenu[]=
 {
 	{1,"",0},
 	{0,"",0},
@@ -308,7 +308,7 @@ static byte
 	"?","?","?","?","?","?","?","?","?","?","?","?","?","?","?","?",
 	"?","?","?","?","?","?","?","?","?","?","?","?","?","?","?","?"
 					},	// DEBUG - consolidate these
-					far ExtScanCodes[] =	// Scan codes with >1 char names
+					ExtScanCodes[] =	// Scan codes with >1 char names
 					{
 	1,0xe,0xf,0x1d,0x2a,0x39,0x3a,0x3b,0x3c,0x3d,0x3e,
 	0x3f,0x40,0x41,0x42,0x43,0x44,0x57,0x59,0x46,0x1c,0x36,
@@ -1559,7 +1559,7 @@ int CP_SaveGame(int quick)
 
 			strcpy(input,&SaveGameNames[which][0]);
 
-			_dos_write(handle,(void far *)input,32,&nwritten);
+			_dos_write(handle,(void *)input,32,&nwritten);
 			lseek(handle,32,SEEK_SET);
 			SaveTheGame(handle,0,0);
 			close(handle);
@@ -1618,7 +1618,7 @@ int CP_SaveGame(int quick)
 
 				unlink(name);
 				handle=creat(name,S_IREAD|S_IWRITE);
-				_dos_write(handle,(void far *)input,32,&nwritten);
+				_dos_write(handle,(void *)input,32,&nwritten);
 				lseek(handle,32,SEEK_SET);
 
 				DrawLSAction(1);
@@ -3103,7 +3103,7 @@ void CleanupControlPanel(void)
 // Handle moving gun around a menu
 //
 ////////////////////////////////////////////////////////////////////
-int HandleMenu(CP_iteminfo *item_i,CP_itemtype far *items,void (*routine)(int w))
+int HandleMenu(CP_iteminfo *item_i,CP_itemtype *items,void (*routine)(int w))
 {
 	char key;
 	static int redrawitem=1,lastitem=-1;
@@ -3349,7 +3349,7 @@ int HandleMenu(CP_iteminfo *item_i,CP_itemtype far *items,void (*routine)(int w)
 //
 // ERASE GUN & DE-HIGHLIGHT STRING
 //
-void EraseGun(CP_iteminfo *item_i,CP_itemtype far *items,int x,int y,int which)
+void EraseGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int y,int which)
 {
 	VWB_Bar(x-1,y,25,16,BKGDCOLOR);
 	SetTextColor(items+which,0);
@@ -3377,7 +3377,7 @@ void DrawHalfStep(int x,int y)
 //
 // DRAW GUN AT NEW POSITION
 //
-void DrawGun(CP_iteminfo *item_i,CP_itemtype far *items,int x,int *y,int which,int basey,void (*routine)(int w))
+void DrawGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int *y,int which,int basey,void (*routine)(int w))
 {
 	VWB_Bar(x-1,*y,25,16,BKGDCOLOR);
 	*y=basey+which*13;
@@ -3420,7 +3420,7 @@ void TicDelay(int count)
 // Draw a menu
 //
 ////////////////////////////////////////////////////////////////////
-void DrawMenu(CP_iteminfo *item_i,CP_itemtype far *items)
+void DrawMenu(CP_iteminfo *item_i,CP_itemtype *items)
 {
 	int i,which=item_i->curpos;
 
@@ -3454,7 +3454,7 @@ void DrawMenu(CP_iteminfo *item_i,CP_itemtype far *items)
 // SET TEXT COLOR (HIGHLIGHT OR NO)
 //
 ////////////////////////////////////////////////////////////////////
-void SetTextColor(CP_itemtype far *items,int hlight)
+void SetTextColor(CP_itemtype *items,int hlight)
 {
 	if (hlight)
 		{SETFONTCOLOR(color_hlite[items->active],BKGDCOLOR);}
@@ -3589,7 +3589,7 @@ void ReadAnyControl(ControlInfo *ci)
 // DRAW DIALOG AND CONFIRM YES OR NO TO QUESTION
 //
 ////////////////////////////////////////////////////////////////////
-int Confirm(char far *string)
+int Confirm(char *string)
 {
 	int xit=0,i,x,y,tick=0,time,whichsnd[2]={ESCPRESSEDSND,SHOOTSND};
 
@@ -3721,10 +3721,10 @@ int GetYorN(int x,int y,int pic)
 // PRINT A MESSAGE IN A WINDOW
 //
 ////////////////////////////////////////////////////////////////////
-void Message(char far *string)
+void Message(char *string)
 {
 	int h=0,w=0,mw=0,i,x,y,time;
-	fontstruct _seg *font;
+	fontstruct *font;
 
 
 	CA_CacheGrChunk (STARTFONT+1);
@@ -3782,7 +3782,7 @@ void StartCPMusic(int song)
 	else
 	{
 		MM_SetLock(&((memptr)audiosegs[STARTMUSIC + chunk]),true);
-		SD_StartMusic((MusicGroup far *)audiosegs[STARTMUSIC + chunk]);
+		SD_StartMusic((MusicGroup *)audiosegs[STARTMUSIC + chunk]);
 	}
 }
 
@@ -3803,7 +3803,7 @@ byte *
 IN_GetScanName(ScanCode scan)
 {
 	byte		**p;
-	ScanCode	far *s;
+	ScanCode	*s;
 
 	for (s = ExtScanCodes,p = ExtScanNames;*s;p++,s++)
 		if (*s == scan)

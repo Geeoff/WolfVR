@@ -5,7 +5,7 @@
 
 #include "ID_HEADS.H"
 #include <MATH.H>
-#include <VALUES.H>
+//#include <VALUES.H>
 
 #include "WL_MENU.H"
 
@@ -756,7 +756,7 @@ typedef	enum	{
 =============================================================================
 */
 
-extern	boolean		MS_CheckParm (char far *string);
+extern	boolean		MS_CheckParm (char *string);
 
 extern	char		str[80],str2[20];
 extern	int			tedlevelnum;
@@ -764,7 +764,7 @@ extern	boolean		tedlevel;
 extern	boolean		nospr;
 extern	boolean		IsA386;
 
-extern	byte far	*scalermemory;
+extern	byte 	*scalermemory;
 
 extern	fixed		focallength;
 extern	unsigned	viewangles;
@@ -782,8 +782,8 @@ extern	int		mouseadjustment;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long		far finetangent[FINEANGLES/4];
-extern	fixed 		far sintable[],far *costable;
+extern	long		finetangent[FINEANGLES/4];
+extern	fixed 		sintable[],*costable;
 
 //
 // derived constants
@@ -908,7 +908,7 @@ extern	int			controlx,controly;		// range from -100 to 100
 extern	boolean		buttonstate[NUMBUTTONS];
 
 extern	boolean		demorecord,demoplayback;
-extern	char		far *demoptr, far *lastdemoptr;
+extern	char		*demoptr, *lastdemoptr;
 extern	memptr		demobuffer;
 
 
@@ -980,8 +980,8 @@ extern	fixed	mindist;
 // math tables
 //
 extern	int			pixelangle[MAXVIEWWIDTH];
-extern	long		far finetangent[FINEANGLES/4];
-extern	fixed 		far sintable[],far *costable;
+extern	long		finetangent[FINEANGLES/4];
+extern	fixed 		sintable[],*costable;
 
 //
 // derived constants
@@ -1077,7 +1077,7 @@ typedef struct
 }	t_compshape;
 
 
-extern	t_compscale _seg *scaledirectory[MAXSCALEHEIGHT+1];
+extern	t_compscale *scaledirectory[MAXSCALEHEIGHT+1];
 extern	long			fullscalefarcall[MAXSCALEHEIGHT+1];
 
 extern	byte		bitmasks1[8][8];
@@ -1147,7 +1147,7 @@ extern	int			doornum;
 
 extern	unsigned	doorposition[MAXDOORS],pwallstate;
 
-extern	byte		far areaconnect[NUMAREAS][NUMAREAS];
+extern	byte		areaconnect[NUMAREAS][NUMAREAS];
 
 extern	boolean		areabyplayer[NUMAREAS];
 
