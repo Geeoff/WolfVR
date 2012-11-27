@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E3A6F178-78B7-44E3-B23D-A8D02C71FEC0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Wolf3D_Win32</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\WOLFSRC\AUDIOSDM.H" />
+    <ClInclude Include="..\WOLFSRC\AUDIOSOD.H" />
+    <ClInclude Include="..\WOLFSRC\AUDIOWL1.H" />
+    <ClInclude Include="..\WOLFSRC\AUDIOWL6.H" />
+    <ClInclude Include="..\WOLFSRC\BUDIOSOD.H" />
+    <ClInclude Include="..\WOLFSRC\BUDIOWL6.H" />
+    <ClInclude Include="..\WOLFSRC\FOREIGN.H" />
+    <ClInclude Include="..\WOLFSRC\F_SPEAR.H" />
+    <ClInclude Include="..\WOLFSRC\GFXE_SOD.H" />
+    <ClInclude Include="..\WOLFSRC\GFXE_WL1.H" />
+    <ClInclude Include="..\WOLFSRC\GFXE_WL6.H" />
+    <ClInclude Include="..\WOLFSRC\GFXV_SDM.H" />
+    <ClInclude Include="..\WOLFSRC\GFXV_SOD.H" />
+    <ClInclude Include="..\WOLFSRC\GFXV_WL1.H" />
+    <ClInclude Include="..\WOLFSRC\GFXV_WL6.H" />
+    <ClInclude Include="..\WOLFSRC\ID_CA.H" />
+    <ClInclude Include="..\WOLFSRC\ID_HEAD.H" />
+    <ClInclude Include="..\WOLFSRC\ID_HEADS.H" />
+    <ClInclude Include="..\WOLFSRC\ID_IN.H" />
+    <ClInclude Include="..\WOLFSRC\ID_MM.H" />
+    <ClInclude Include="..\WOLFSRC\ID_PM.H" />
+    <ClInclude Include="..\WOLFSRC\ID_SD.H" />
+    <ClInclude Include="..\WOLFSRC\ID_US.H" />
+    <ClInclude Include="..\WOLFSRC\ID_VH.H" />
+    <ClInclude Include="..\WOLFSRC\ID_VL.H" />
+    <ClInclude Include="..\WOLFSRC\MAPSSDM.H" />
+    <ClInclude Include="..\WOLFSRC\MAPSSOD.H" />
+    <ClInclude Include="..\WOLFSRC\MAPSWL1.H" />
+    <ClInclude Include="..\WOLFSRC\MAPSWL6.H" />
+    <ClInclude Include="..\WOLFSRC\MAPSWLF.H" />
+    <ClInclude Include="..\WOLFSRC\PICLIST.H" />
+    <ClInclude Include="..\WOLFSRC\SDMVER.H" />
+    <ClInclude Include="..\WOLFSRC\SHAREMSG.H" />
+    <ClInclude Include="..\WOLFSRC\SODVER.H" />
+    <ClInclude Include="..\WOLFSRC\SPANISH.H" />
+    <ClInclude Include="..\WOLFSRC\SPANVER.H" />
+    <ClInclude Include="..\WOLFSRC\VERSION.H" />
+    <ClInclude Include="..\WOLFSRC\WLFJ1VER.H" />
+    <ClInclude Include="..\WOLFSRC\WL_DEF.H" />
+    <ClInclude Include="..\WOLFSRC\WL_MENU.H" />
+    <ClInclude Include="..\WOLFSRC\WOLF1VER.H" />
+    <ClInclude Include="..\WOLFSRC\WOLFGTV.H" />
+    <ClInclude Include="..\WOLFSRC\WOLFJVER.H" />
+    <ClInclude Include="..\WOLFSRC\WOLFVER.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\WOLFSRC\CONTIGSC.C" />
+    <ClCompile Include="..\WOLFSRC\DETECT.C" />
+    <ClCompile Include="..\WOLFSRC\ID_CA.C" />
+    <ClCompile Include="..\WOLFSRC\ID_IN.C" />
+    <ClCompile Include="..\WOLFSRC\ID_MM.C" />
+    <ClCompile Include="..\WOLFSRC\ID_PM.C" />
+    <ClCompile Include="..\WOLFSRC\ID_SD.C" />
+    <ClCompile Include="..\WOLFSRC\ID_US_1.C" />
+    <ClCompile Include="..\WOLFSRC\ID_VH.C" />
+    <ClCompile Include="..\WOLFSRC\ID_VL.C" />
+    <ClCompile Include="..\WOLFSRC\MUNGE.C" />
+    <ClCompile Include="..\WOLFSRC\OLDSCALE.C" />
+    <ClCompile Include="..\WOLFSRC\WL_ACT1.C" />
+    <ClCompile Include="..\WOLFSRC\WL_ACT2.C" />
+    <ClCompile Include="..\WOLFSRC\WL_AGENT.C" />
+    <ClCompile Include="..\WOLFSRC\WL_DEBUG.C" />
+    <ClCompile Include="..\WOLFSRC\WL_DRAW.C" />
+    <ClCompile Include="..\WOLFSRC\WL_GAME.C" />
+    <ClCompile Include="..\WOLFSRC\WL_INTER.C" />
+    <ClCompile Include="..\WOLFSRC\WL_MAIN.C" />
+    <ClCompile Include="..\WOLFSRC\WL_MENU.C" />
+    <ClCompile Include="..\WOLFSRC\WL_PLAY.C" />
+    <ClCompile Include="..\WOLFSRC\WL_SCALE.C" />
+    <ClCompile Include="..\WOLFSRC\WL_STATE.C" />
+    <ClCompile Include="..\WOLFSRC\WL_TEXT.C" />
+    <ClCompile Include="..\WOLFSRC\WOLFHACK.C" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
