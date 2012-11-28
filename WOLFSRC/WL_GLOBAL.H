@@ -9,6 +9,8 @@
 #define DAY		30
 
 #include "ID_HEADS.H"
+
+#define _USE_MATH_DEFINES // define M_PI.  If not, its defined below.
 #include <MATH.H>
 //#include <VALUES.H>
 
@@ -50,6 +52,11 @@
 
 =============================================================================
 */
+
+// Deprecated math constants
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 #define MAXACTORS		150				// max number of nazis, etc / map
 #define MAXSTATS		400				// max number of lamps, bonus, etc
