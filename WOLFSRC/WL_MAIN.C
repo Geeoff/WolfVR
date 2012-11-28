@@ -1054,7 +1054,7 @@ void DoJukebox(void)
 			XTOWER2_MUS              // 23
 #endif
 		};
-	struct dostime_t time;
+	//struct dostime_t time;
 
 
 
@@ -1067,8 +1067,10 @@ void DoJukebox(void)
 
 #ifndef SPEAR
 #ifndef UPLOAD
-	_dos_gettime(&time);
-	start = (time.hsecond%3)*6;
+	//_dos_gettime(&time);
+	//start = (time.hsecond%3)*6;
+	start = 0;
+	// FIXME : Get time in 100th of a second.
 #else
 	start = 0;
 #endif

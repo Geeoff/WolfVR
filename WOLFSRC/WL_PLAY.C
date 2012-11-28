@@ -377,9 +377,13 @@ void PollMouseMove (void)
 {
 	int	mousexmove,mouseymove;
 
-	Mouse(MDelta);
-	mousexmove = _CX;
-	mouseymove = _DX;
+	//Mouse(MDelta);
+	//mousexmove = _CX;
+	//mouseymove = _DX;
+
+	// FIXME
+	mousexmove = 0;
+	mouseymove = 0;
 
 	controlx += mousexmove*10/(13-mouseadjustment);
 	controly += mouseymove*20/(13-mouseadjustment);
