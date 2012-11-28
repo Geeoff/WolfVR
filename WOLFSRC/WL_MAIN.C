@@ -32,6 +32,10 @@
 #define VIEWWIDTH       256                     // size of view window
 #define VIEWHEIGHT      144
 
+// Emulate Borland compuler's argc and argv. 
+int _argc = 0;
+const char** _argv = NULL;
+
 /*
 =============================================================================
 
@@ -1583,9 +1587,12 @@ void    DemoLoop (void)
 
 char    *nosprtxt[] = {"nospr",nil};
 
-void main (void)
+int main (int argc, const char** argv)
 {
 	int     i;
+
+	_argc = argc;
+	_argv = argv;
 
 
 #ifdef BETA
@@ -1612,5 +1619,7 @@ void main (void)
 	DemoLoop();
 
 	Quit("Demo loop exited???");
+
+	return 0;
 }
 
