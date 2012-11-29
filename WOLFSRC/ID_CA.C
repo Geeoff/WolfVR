@@ -53,15 +53,16 @@ loaded into the data segment
 //*/
 //
 //byte 			*tinf;
-//int			mapon;
+int			mapon;
 //
-//unsigned		*mapsegs[MAPPLANES];
-//maptype			*mapheaderseg[NUMMAPS];
-//byte			*audiosegs[NUMSNDCHUNKS];
-//void			*grsegs[NUMCHUNKS];
-//
-//byte			grneeded[NUMCHUNKS];
-//byte		ca_levelbit,ca_levelnum;
+unsigned		*mapsegs[MAPPLANES];
+maptype			*mapheaderseg[NUMMAPS];
+byte			*audiosegs[NUMSNDCHUNKS];
+void			*grsegs[NUMCHUNKS];
+
+byte			grneeded[NUMCHUNKS];
+byte			ca_levelbit;
+//byte			ca_levelnum;
 //
 //int			profilehandle,debughandle;
 //

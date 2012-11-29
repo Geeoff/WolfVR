@@ -73,6 +73,8 @@ int             mouseadjustment;
 
 char	configname[13]="CONFIG.";
 
+// FIXME: signon doesn't seem to be defined anywhere.  Not sure if this is the default value.
+char signon = 0;
 
 /*
 =============================================================================
@@ -1182,8 +1184,9 @@ void InitGame (void)
 		CA_CacheGrChunk (ERRORSCREEN);
 		screen = grsegs[ERRORSCREEN];
 		ShutdownId();
-		movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
-		gotoxy (1,23);
+		// FIXME : Cursor doesnt make sense for a non-console app.
+		//movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
+		//gotoxy (1,23);
 		exit(1);
 	}
 
@@ -1378,19 +1381,21 @@ void Quit (char *error)
 
 	if (error && *error)
 	{
-	  movedata ((unsigned)screen,7,0xb800,0,7*160);
-	  gotoxy (10,4);
-	  puts(error);
-	  gotoxy (1,8);
-	  exit(1);
+		// FIXME
+		//movedata ((unsigned)screen,7,0xb800,0,7*160);
+		//gotoxy (10,4);
+		//puts(error);
+		//gotoxy (1,8);
+		exit(1);
 	}
 	else
 	if (!error || !(*error))
 	{
-		clrscr();
+		// FIXME
+		//clrscr();
 		#ifndef JAPAN
-		movedata ((unsigned)screen,7,0xb800,0,4000);
-		gotoxy(1,24);
+		//movedata ((unsigned)screen,7,0xb800,0,4000);
+		//gotoxy(1,24);
 		#endif
 //asm	mov	bh,0
 //asm	mov	dh,23	// row

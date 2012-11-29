@@ -19,15 +19,15 @@
 //#define UNCACHEGRCHUNK(chunk)	{MM_FreePtr(&grsegs[chunk]);grneeded[chunk]&=~ca_levelbit;}
 //
 //byte	update[UPDATEHIGH][UPDATEWIDE];
-//
-////==========================================================================
-//
-//pictabletype	 *pictable;
-//
-//
-//int	px,py;
-//byte	fontcolor,backcolor;
-//int	fontnumber;
+
+//==========================================================================
+
+pictabletype	 *pictable;
+
+
+int	px,py;
+byte	fontcolor,backcolor;
+int	fontnumber;
 //int bufferwidth,bufferheight;
 //
 //
@@ -581,6 +581,8 @@ void VWB_Vlin (int y1, int y2, int x, int color) {}
 
 void	VW_MeasurePropString (char *string, word *width, word *height) {}
 
+// FIXME: gamepal doesn't seem to be defined anywhere.  Not sure if this is the default value.
+byte gamepal = 0;
 
 void LatchDrawPic (unsigned x, unsigned y, unsigned picnum) {}
 void LoadLatchMem (void) {}

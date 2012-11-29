@@ -29,35 +29,35 @@
 //*/
 //
 //
-//#ifdef DEBUGWALLS
-//unsigned screenloc[3]= {0,0,0};
-//#else
-//unsigned screenloc[3]= {PAGE1START,PAGE2START,PAGE3START};
-//#endif
+#ifdef DEBUGWALLS
+unsigned screenloc[3]= {0,0,0};
+#else
+unsigned screenloc[3]= {PAGE1START,PAGE2START,PAGE3START};
+#endif
 //unsigned freelatch = FREESTART;
 //
-//long 	lasttimecount;
-//long 	frameon;
-//
-//unsigned	wallheight[MAXVIEWWIDTH];
-//
-//fixed	tileglobal	= TILEGLOBAL;
+long 	lasttimecount;
+long 	frameon;
+
+unsigned	wallheight[MAXVIEWWIDTH];
+
+fixed	tileglobal	= TILEGLOBAL;
 //fixed	mindist		= MINDIST;
 //
+
 //
-////
-//// math tables
-////
-//int			pixelangle[MAXVIEWWIDTH];
-//long		finetangent[FINEANGLES/4];
-//fixed 		sintable[ANGLES+ANGLES/4],*costable = sintable+(ANGLES/4);
+// math tables
 //
+int			pixelangle[MAXVIEWWIDTH];
+long		finetangent[FINEANGLES/4];
+fixed 		sintable[ANGLES+ANGLES/4],*costable = sintable+(ANGLES/4);
+
 ////
 //// refresh variables
 ////
-//fixed	viewx,viewy;			// the focal point
+fixed	viewx,viewy;			// the focal point
 //int		viewangle;
-//fixed	viewsin,viewcos;
+fixed	viewsin,viewcos;
 //
 //
 //
@@ -99,7 +99,7 @@
 //long	xintercept,yintercept;
 //long	xstep,ystep;
 //
-//int		horizwall[MAXWALLTILES],vertwall[MAXWALLTILES];
+int		horizwall[MAXWALLTILES],vertwall[MAXWALLTILES];
 //
 //
 ///*

@@ -35,9 +35,9 @@
 //
 ////	Global variables
 //		char		*abortprogram;
-//		boolean		NoWait;
-//		word		PrintX,PrintY;
-//		word		WindowX,WindowY,WindowW,WindowH;
+		boolean		NoWait;
+		word		PrintX,PrintY;
+		word		WindowX,WindowY,WindowW,WindowH;
 //
 ////	Internal variables
 //#define	ConfigVersion	1
@@ -50,21 +50,21 @@
 //					CursorBad;
 //		int			CursorX,CursorY;
 //
-//		void		(*USL_MeasureString)(char *,word *,word *) = VW_MeasurePropString,
-//					(*USL_DrawString)(char *) = VWB_DrawPropString;
+		void		(*USL_MeasureString)(char *,word *,word *) = VW_MeasurePropString;
+//		void		(*USL_DrawString)(char *) = VWB_DrawPropString;
 //
 //		SaveGame	Games[MaxSaveGames];
-//		HighScore	Scores[MaxScores] =
-//					{
-//						{"id software-'92",10000,1},
-//						{"Adrian Carmack",10000,1},
-//						{"John Carmack",10000,1},
-//						{"Kevin Cloud",10000,1},
-//						{"Tom Hall",10000,1},
-//						{"John Romero",10000,1},
-//						{"Jay Wilbur",10000,1},
-//					};
-//
+		HighScore	Scores[MaxScores] =
+					{
+						{"id software-'92",10000,1},
+						{"Adrian Carmack",10000,1},
+						{"John Carmack",10000,1},
+						{"Kevin Cloud",10000,1},
+						{"Tom Hall",10000,1},
+						{"John Romero",10000,1},
+						{"Jay Wilbur",10000,1},
+					};
+
 ////	Internal routines
 //
 ////	Public routines

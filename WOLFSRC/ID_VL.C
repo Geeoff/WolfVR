@@ -12,15 +12,16 @@
 //// SC_INDEX is expected to stay at SC_MAPMASK for proper operation
 ////
 //
-//unsigned	bufferofs;
-//unsigned	displayofs,pelpan;
+unsigned	bufferofs;
+unsigned	displayofs;
+//unsigned	pelpan;
 //
 //unsigned	screenseg=SCREENSEG;		// set to 0xa000 for asm convenience
 //
 //unsigned	linewidth;
 //unsigned	ylookup[MAXSCANLINES];
 //
-//boolean		screenfaded;
+boolean		screenfaded;
 //unsigned	bordercolor;
 //
 //boolean		fastpalette;				// if true, use outsb to set

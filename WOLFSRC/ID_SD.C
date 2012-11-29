@@ -66,20 +66,21 @@
 //						SDL_t0SlowAsmService(void);
 //
 ////	Global variables
-//	boolean		SoundSourcePresent,
-//				AdLibPresent,
-//				SoundBlasterPresent,SBProPresent,
-//				NeedsDigitized,NeedsMusic,
-//				SoundPositioned;
-//	SDMode		SoundMode;
-//	SMMode		MusicMode;
-//	SDSMode		DigiMode;
-//	longword	TimeCount;
+	boolean		SoundSourcePresent = false;
+	boolean		AdLibPresent;
+	boolean		SoundBlasterPresent;
+//	boolean		SBProPresent,
+//				NeedsDigitized,NeedsMusic;
+	boolean		SoundPositioned;
+	SDMode		SoundMode;
+	SMMode		MusicMode;
+	SDSMode		DigiMode;
+	longword	TimeCount;
 //	word		HackCount;
 //	word		*SoundTable;	// Really * *SoundTable, but that don't work
 //	boolean		ssIsTandy;
 //	word		ssPort = 2;
-//	int			DigiMap[LASTSOUND];
+	int			DigiMap[LASTSOUND];
 //
 ////	Internal variables
 //static	boolean			SD_Started;
@@ -2365,6 +2366,11 @@
 //
 //	return(result);
 //}
+
+
+void alOut(byte n,byte b)
+{
+}
 
 // Function prototypes
 void SD_Startup(void)

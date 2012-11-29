@@ -5,8 +5,8 @@
 //
 
 #include "ID_HEADS.H"
-//#pragma hdrstop
-//
+#pragma hdrstop
+
 ////	Main Mem specific variables
 //	boolean			MainPresent;
 //	memptr			MainMemPages[PMMaxMainMem];
@@ -14,14 +14,14 @@
 //	int				MainPagesAvail;
 //
 ////	EMS specific variables
-//	boolean			EMSPresent;
-//	word			EMSAvail,EMSPagesAvail,EMSHandle,
-//					EMSPageFrame,EMSPhysicalPage;
+	boolean			EMSPresent;
+	word			EMSAvail,EMSPagesAvail,EMSHandle;
+//	word			EMSPageFrame,EMSPhysicalPage;
 //	EMSListStruct	EMSList[EMSFrameCount];
-//
-////	XMS specific variables
-//	boolean			XMSPresent;
-//	word			XMSAvail,XMSPagesAvail,XMSHandle;
+
+//	XMS specific variables
+	boolean			XMSPresent;
+	word			XMSAvail,XMSPagesAvail,XMSHandle;
 //	longword		XMSDriver;
 //	int				XMSProtectPage = -1;
 //

@@ -69,9 +69,9 @@ EMS / XMS unmanaged routines
 //=============================================================================
 //*/
 //
-//mminfotype	mminfo;
+mminfotype	mminfo;
 //memptr		bufferseg;
-//boolean		mmerror;
+boolean		mmerror;
 //
 //void		(* beforesort) (void);
 //void		(* aftersort) (void);

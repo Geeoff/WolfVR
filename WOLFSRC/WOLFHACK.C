@@ -9,7 +9,8 @@ int		spanstart[MAXVIEWHEIGHT/2];
 fixed	stepscale[MAXVIEWHEIGHT/2];
 fixed	basedist[MAXVIEWHEIGHT/2];
 
-extern	char		planepics[8192];	// 4k of ceiling, 4k of floor
+// NOTE : Was defined in WHACK_A.ASM
+char	planepics[8192];	// 4k of ceiling, 4k of floor
 
 int		halfheight = 0;
 
@@ -32,6 +33,10 @@ int		mr_xfrac;
 int		mr_yfrac;
 int		mr_dest;
 
+void MapRow(void)
+{
+	// FIXME : This is defined in WHACK_A.ASM.  Make sure this functions does the same thing.
+}
 
 /*
 ==============
