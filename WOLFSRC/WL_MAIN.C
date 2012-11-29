@@ -244,29 +244,29 @@ void WriteConfig(void)
 ========================
 */
 
-char    *JHParmStrings[] = {"no386",nil};
-void Patch386 (void)
-{
-extern void jabhack2(void);
-extern int  CheckIs386(void);
-
-	int     i;
-
-	for (i = 1;i < _argc;i++)
-		if (US_CheckParm(_argv[i],JHParmStrings) == 0)
-		{
-			IsA386 = false;
-			return;
-		}
-
-	if (CheckIs386())
-	{
-		IsA386 = true;
-		jabhack2();
-	}
-	else
-		IsA386 = false;
-}
+//char    *JHParmStrings[] = {"no386",nil};
+//void Patch386 (void)
+//{
+//extern void jabhack2(void);
+//extern int  CheckIs386(void);
+//
+//	int     i;
+//
+//	for (i = 1;i < _argc;i++)
+//		if (US_CheckParm(_argv[i],JHParmStrings) == 0)
+//		{
+//			IsA386 = false;
+//			return;
+//		}
+//
+//	if (CheckIs386())
+//	{
+//		IsA386 = true;
+//		jabhack2();
+//	}
+//	else
+//		IsA386 = false;
+//}
 
 //===========================================================================
 
@@ -333,9 +333,9 @@ boolean SaveTheGame(int file,int x,int y)
 	long avail,size,checksum;
 	objtype *ob,nullobj;
 
-
-	if (_dos_getdiskfree(0,&dfree))
-	  Quit("Error in _dos_getdiskfree call");
+	// FIXME
+	/*if (_dos_getdiskfree(0,&dfree))
+	  Quit("Error in _dos_getdiskfree call");*/
 
 	avail = (long)dfree.avail_clusters *
 			dfree.bytes_per_sector *
@@ -773,7 +773,7 @@ void FinishSignon (void)
 {
 
 #ifndef SPEAR
-	VW_Bar (0,189,300,11,peekb(0xa000,0));
+	VW_Bar (0,189,300,11,0);//peekb(0xa000,0)); // FIXME : Grabbing some sort of color from the VGA adaptor?
 	WindowX = 0;
 	WindowW = 320;
 	PrintY = 190;
@@ -793,7 +793,7 @@ void FinishSignon (void)
 		IN_Ack ();
 
 	#ifndef JAPAN
-	VW_Bar (0,189,300,11,peekb(0xa000,0));
+	VW_Bar (0,189,300,11,0);//peekb(0xa000,0)); // FIXME : Grabbing some sort of color from the VGA adaptor?
 
 	PrintY = 190;
 	SETFONTCOLOR(10,4);
@@ -1621,7 +1621,7 @@ int main (int argc, const char** argv)
 
 	CheckForEpisodes();
 
-	Patch386 ();
+	//Patch386 ();
 
 	InitGame ();
 

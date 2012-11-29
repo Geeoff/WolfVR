@@ -1539,121 +1539,123 @@ void PrintLSEntry(int w,int color)
 ////////////////////////////////////////////////////////////////////
 int CP_SaveGame(int quick)
 {
-	int handle,which,exit=0;
-	unsigned nwritten;
-	char name[13],input[32];
+//	int handle,which,exit=0;
+//	unsigned nwritten;
+//	char name[13],input[32];
+//
+//
+//	strcpy(name,SaveName);
+//
+//	//
+//	// QUICKSAVE?
+//	//
+//	if (quick)
+//	{
+//		which=LSItems.curpos;
+//
+//		if (SaveGamesAvail[which])
+//		{
+//			name[7]=which+'0';
+//			unlink(name);
+//			handle=creat(name,S_IREAD|S_IWRITE);
+//
+//			strcpy(input,&SaveGameNames[which][0]);
+//
+//			_dos_write(handle,(void *)input,32,&nwritten);
+//			lseek(handle,32,SEEK_SET);
+//			SaveTheGame(handle,0,0);
+//			close(handle);
+//
+//			return 1;
+//		}
+//	}
+//
+//
+//#ifdef SPEAR
+//	UnCacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
+//	CacheLump (LOADSAVE_LUMP_START,LOADSAVE_LUMP_END);
+//#endif
+//
+//	DrawLoadSaveScreen(1);
+//
+//	do
+//	{
+//		which=HandleMenu(&LSItems,&LSMenu[0],TrackWhichGame);
+//		if (which>=0)
+//		{
+//			//
+//			// OVERWRITE EXISTING SAVEGAME?
+//			//
+//			if (SaveGamesAvail[which])
+//				#ifdef JAPAN
+//				if (!GetYorN(7,8,C_JAPSAVEOVERPIC))
+//				#else
+//				if (!Confirm(GAMESVD))
+//				#endif
+//				{
+//					DrawLoadSaveScreen(1);
+//					continue;
+//				}
+//				else
+//				{
+//					DrawLoadSaveScreen(1);
+//					PrintLSEntry(which,HIGHLIGHT);
+//					VW_UpdateScreen();
+//				}
+//
+//			ShootSnd();
+//
+//			strcpy(input,&SaveGameNames[which][0]);
+//			name[7]=which+'0';
+//
+//			fontnumber=0;
+//			if (!SaveGamesAvail[which])
+//				VWB_Bar(LSM_X+LSItems.indent+1,LSM_Y+which*13+1,LSM_W-LSItems.indent-16,10,BKGDCOLOR);
+//			VW_UpdateScreen();
+//
+//			if (US_LineInput(LSM_X+LSItems.indent+2,LSM_Y+which*13+1,input,input,true,31,LSM_W-LSItems.indent-30))
+//			{
+//				SaveGamesAvail[which]=1;
+//				strcpy(&SaveGameNames[which][0],input);
+//
+//				unlink(name);
+//				handle=creat(name,S_IREAD|S_IWRITE);
+//				_dos_write(handle,(void *)input,32,&nwritten);
+//				lseek(handle,32,SEEK_SET);
+//
+//				DrawLSAction(1);
+//				SaveTheGame(handle,LSA_X+8,LSA_Y+5);
+//
+//				close(handle);
+//
+//				ShootSnd();
+//				exit=1;
+//			}
+//			else
+//			{
+//				VWB_Bar(LSM_X+LSItems.indent+1,LSM_Y+which*13+1,LSM_W-LSItems.indent-16,10,BKGDCOLOR);
+//				PrintLSEntry(which,HIGHLIGHT);
+//				VW_UpdateScreen();
+//				SD_PlaySound(ESCPRESSEDSND);
+//				continue;
+//			}
+//
+//			fontnumber=1;
+//			break;
+//		}
+//
+//	} while(which>=0);
+//
+//	MenuFadeOut();
+//
+//#ifdef SPEAR
+//	UnCacheLump (LOADSAVE_LUMP_START,LOADSAVE_LUMP_END);
+//	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
+//#endif
+//
+//	return exit;
 
-
-	strcpy(name,SaveName);
-
-	//
-	// QUICKSAVE?
-	//
-	if (quick)
-	{
-		which=LSItems.curpos;
-
-		if (SaveGamesAvail[which])
-		{
-			name[7]=which+'0';
-			unlink(name);
-			handle=creat(name,S_IREAD|S_IWRITE);
-
-			strcpy(input,&SaveGameNames[which][0]);
-
-			_dos_write(handle,(void *)input,32,&nwritten);
-			lseek(handle,32,SEEK_SET);
-			SaveTheGame(handle,0,0);
-			close(handle);
-
-			return 1;
-		}
-	}
-
-
-#ifdef SPEAR
-	UnCacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
-	CacheLump (LOADSAVE_LUMP_START,LOADSAVE_LUMP_END);
-#endif
-
-	DrawLoadSaveScreen(1);
-
-	do
-	{
-		which=HandleMenu(&LSItems,&LSMenu[0],TrackWhichGame);
-		if (which>=0)
-		{
-			//
-			// OVERWRITE EXISTING SAVEGAME?
-			//
-			if (SaveGamesAvail[which])
-				#ifdef JAPAN
-				if (!GetYorN(7,8,C_JAPSAVEOVERPIC))
-				#else
-				if (!Confirm(GAMESVD))
-				#endif
-				{
-					DrawLoadSaveScreen(1);
-					continue;
-				}
-				else
-				{
-					DrawLoadSaveScreen(1);
-					PrintLSEntry(which,HIGHLIGHT);
-					VW_UpdateScreen();
-				}
-
-			ShootSnd();
-
-			strcpy(input,&SaveGameNames[which][0]);
-			name[7]=which+'0';
-
-			fontnumber=0;
-			if (!SaveGamesAvail[which])
-				VWB_Bar(LSM_X+LSItems.indent+1,LSM_Y+which*13+1,LSM_W-LSItems.indent-16,10,BKGDCOLOR);
-			VW_UpdateScreen();
-
-			if (US_LineInput(LSM_X+LSItems.indent+2,LSM_Y+which*13+1,input,input,true,31,LSM_W-LSItems.indent-30))
-			{
-				SaveGamesAvail[which]=1;
-				strcpy(&SaveGameNames[which][0],input);
-
-				unlink(name);
-				handle=creat(name,S_IREAD|S_IWRITE);
-				_dos_write(handle,(void *)input,32,&nwritten);
-				lseek(handle,32,SEEK_SET);
-
-				DrawLSAction(1);
-				SaveTheGame(handle,LSA_X+8,LSA_Y+5);
-
-				close(handle);
-
-				ShootSnd();
-				exit=1;
-			}
-			else
-			{
-				VWB_Bar(LSM_X+LSItems.indent+1,LSM_Y+which*13+1,LSM_W-LSItems.indent-16,10,BKGDCOLOR);
-				PrintLSEntry(which,HIGHLIGHT);
-				VW_UpdateScreen();
-				SD_PlaySound(ESCPRESSEDSND);
-				continue;
-			}
-
-			fontnumber=1;
-			break;
-		}
-
-	} while(which>=0);
-
-	MenuFadeOut();
-
-#ifdef SPEAR
-	UnCacheLump (LOADSAVE_LUMP_START,LOADSAVE_LUMP_END);
-	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
-#endif
-
-	return exit;
+	return 0;
 }
 
 

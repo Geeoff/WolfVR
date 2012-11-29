@@ -73,7 +73,8 @@ void DrawSpans (int x1, int x2, int height)
 	prestep = viewwidth/2 - x1;
 	do
 	{
-		outportb (SC_INDEX+1,1<<plane);
+		// FIXME : Do we even need DrawSpans?
+		//outportb (SC_INDEX+1,1<<plane);
 		mr_xfrac = startxfrac - (mr_xstep>>2)*prestep;
 		mr_yfrac = startyfrac - (mr_ystep>>2)*prestep;
 
