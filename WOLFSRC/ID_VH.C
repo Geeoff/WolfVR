@@ -181,7 +181,7 @@
 //// copy the pic to a temp buffer
 ////
 //	MM_GetPtr (&(memptr)temp,size);
-//	_fmemcpy (temp,source,size);
+//	memcpy (temp,source,size);
 //
 ////
 //// munge it back into the original buffer

@@ -188,7 +188,7 @@
 //	asm	int	0x10
 //
 //	dest = MK_FP(0xa000,0);
-//	_fmemcpy (dest,buffer,64000);
+//	memcpy (dest,buffer,64000);
 //
 //	VL_SetPalette (&gamepal);
 //

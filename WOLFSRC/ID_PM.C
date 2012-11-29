@@ -505,7 +505,7 @@
 //	MM_GetPtr(&(memptr)PMSegPages,sizeof(PageListStruct) * PMNumBlocks);
 //	MM_SetLock(&(memptr)PMSegPages,true);
 //	PMPages = (PageListStruct *)PMSegPages;
-//	_fmemset(PMPages,0,sizeof(PageListStruct) * PMNumBlocks);
+//	memset(PMPages,0,sizeof(PageListStruct) * PMNumBlocks);
 //
 //	// Read in the chunk offsets
 //	size = sizeof(longword) * ChunksInFile;

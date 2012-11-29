@@ -1243,7 +1243,7 @@
 //	MM_GetPtr(&list,PMPageSize);
 //	PM_CheckMainMem();
 //	p = (word *)MK_FP(PM_GetPage(ChunksInFile - 1),0);
-//	_fmemcpy((void *)list,(void *)p,PMPageSize);
+//	memcpy((void *)list,(void *)p,PMPageSize);
 //	pg = PMSoundStart;
 //	for (i = 0;i < PMPageSize / (sizeof(word) * 2);i++,p += 2)
 //	{
@@ -1253,7 +1253,7 @@
 //	}
 //	PM_UnlockMainMem();
 //	MM_GetPtr((memptr *)&DigiList,i * sizeof(word) * 2);
-//	_fmemcpy((void *)DigiList,(void *)list,i * sizeof(word) * 2);
+//	memcpy((void *)DigiList,(void *)list,i * sizeof(word) * 2);
 //	MM_FreePtr(&list);
 //	NumDigi = i;
 //

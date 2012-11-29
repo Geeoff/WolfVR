@@ -24,7 +24,7 @@ void VL_MungePic (unsigned char *source, unsigned width, unsigned height)
 	if (!temp)
 		errout ("Non enough memory for munge buffer!\n");
 
-	_fmemcpy (temp,source,size);
+	memcpy (temp,source,size);
 
 //
 // munge it back into the original buffer

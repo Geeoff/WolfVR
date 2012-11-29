@@ -454,7 +454,7 @@
 //
 //	VL_WaitVBL(1);
 //	VL_GetPalette (&palette1[0][0]);
-//	_fmemcpy (palette2,palette1,768);
+//	memcpy (palette2,palette1,768);
 //
 ////
 //// fade through intermediate frames
@@ -503,7 +503,7 @@
 //
 //	VL_WaitVBL(1);
 //	VL_GetPalette (&palette1[0][0]);
-//	_fmemcpy (&palette2[0][0],&palette1[0][0],sizeof(palette1));
+//	memcpy (&palette2[0][0],&palette1[0][0],sizeof(palette1));
 //
 //	start *= 3;
 //	end = end*3+2;
@@ -553,7 +553,7 @@
 //	fastpalette = true;
 //	VL_SetPalette (&palette1[0][0]);
 //	VL_GetPalette (&palette2[0][0]);
-//	if (_fmemcmp (&palette1[0][0],&palette2[0][0],768))
+//	if (memcmp (&palette1[0][0],&palette2[0][0],768))
 //		fastpalette = false;
 //}
 //
@@ -644,7 +644,7 @@
 //	*dest++ = color;
 //
 //	VGAMAPMASK(15);
-//	_fmemset (dest,color,midbytes);
+//	memset (dest,color,midbytes);
 //	dest+=midbytes;
 //
 //	VGAMAPMASK(rightmask);
@@ -721,7 +721,7 @@
 //		*dest++ = color;
 //
 //		VGAMAPMASK(15);
-//		_fmemset (dest,color,midbytes);
+//		memset (dest,color,midbytes);
 //		dest+=midbytes;
 //
 //		VGAMAPMASK(rightmask);
@@ -806,7 +806,7 @@
 //
 //		screen = dest;
 //		for (y=0;y<height;y++,screen+=linewidth,source+=width)
-//			_fmemcpy (screen,source,width);
+//			memcpy (screen,source,width);
 //	}
 //}
 //
@@ -844,7 +844,7 @@
 //
 //		screen = dest;
 //		for (y=0;y<height;y++,screen+=linewidth,source+=width)
-//			_fmemcpy (screen,source,width);
+//			memcpy (screen,source,width);
 //	}
 //}
 //

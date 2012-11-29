@@ -222,7 +222,7 @@
 //
 //	totalsize = FP_OFF(code);
 //	MM_GetPtr (finalspot,totalsize);
-//	_fmemcpy ((byte *)(*finalspot),(byte *)work,totalsize);
+//	memcpy ((byte *)(*finalspot),(byte *)work,totalsize);
 //
 //	return totalsize;
 //}

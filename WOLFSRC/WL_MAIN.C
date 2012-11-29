@@ -833,7 +833,7 @@ boolean MS_CheckParm (char *check)
 			if (!*parm++)
 				break;                          // hit end of string without an alphanum
 
-		if ( !_fstricmp(check,parm) )
+		if ( !stricmp(check,parm) )
 			return true;
 	}
 

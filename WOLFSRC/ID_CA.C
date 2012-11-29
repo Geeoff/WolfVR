@@ -1574,7 +1574,7 @@ loaded into the data segment
 //
 //void CA_ClearAllMarks (void)
 //{
-//	_fmemset (grneeded,0,sizeof(grneeded));
+//	memset (grneeded,0,sizeof(grneeded));
 //	ca_levelbit = 1;
 //	ca_levelnum = 0;
 //}
