@@ -1267,7 +1267,8 @@ close(profilehandle);
 	if (virtualreality)
 	{
 		NoWait = true;
-		geninterrupt(0x60);
+		//geninterrupt(0x60);
+		// FIXME : What does this interrupt do?
 	}
 }
 
@@ -1354,8 +1355,9 @@ void Quit (char *error)
 	unsigned        finscreen;
 	memptr	screen;
 
-	if (virtualreality)
-		geninterrupt(0x61);
+	// FIXME : What does this interrupt do?
+	//if (virtualreality)
+	//	geninterrupt(0x61);
 
 	ClearMemory ();
 	if (!*error)

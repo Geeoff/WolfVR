@@ -1706,8 +1706,9 @@ void CopyProtection(void)
 
 	strcpy(message,DosMessages[US_RndT()%9]);
 
-	_AX = 3;
-	geninterrupt(0x10);
+	//_AX = 3;
+	//geninterrupt(0x10);
+	// FIXME : the above may mean "Get Cursor Position And Shape".
 
 	printf("%s\n",message);
 	exit(1);
