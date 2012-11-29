@@ -441,10 +441,10 @@ byte			ca_levelbit;
 //	length >>= 2;
 //  }
 //
-//  sourceseg = FP_SEG(source);
-//  sourceoff = FP_OFF(source);
-//  destseg = FP_SEG(dest);
-//  destoff = FP_OFF(dest);
+//  sourceseg = (source);
+//  sourceoff = (source);
+//  destseg = (dest);
+//  destoff = (dest);
 //  endoff = destoff+length;
 //
 ////
@@ -766,12 +766,12 @@ byte			ca_levelbit;
 //#endif
 //
 //  end = dest + (length)/2;
-//  sourceseg = FP_SEG(source);
-//  sourceoff = FP_OFF(source);
-//  destseg = FP_SEG(dest);
-//  destoff = FP_OFF(dest);
-//  endseg = FP_SEG(end);
-//  endoff = FP_OFF(end);
+//  sourceseg = (source);
+//  sourceoff = (source);
+//  destseg = (dest);
+//  destoff = (dest);
+//  endseg = (end);
+//  endoff = (end);
 //
 //
 ////
@@ -868,7 +868,7 @@ byte			ca_levelbit;
 //#ifdef GRHEADERLINKED
 //
 //	grhuffman = (huffnode *)&EGAdict;
-//	grstarts = (long *)FP_SEG(&EGAhead);
+//	grstarts = (long *)(&EGAhead);
 //
 //	CAL_OptimizeNodes (grhuffman);
 //
@@ -964,7 +964,7 @@ byte			ca_levelbit;
 //	close(handle);
 //#else
 //
-//	tinf = (byte *)FP_SEG(&maphead);
+//	tinf = (byte *)(&maphead);
 //
 //#endif
 //
@@ -1048,7 +1048,7 @@ byte			ca_levelbit;
 //#else
 //	audiohuffman = (huffnode *)&audiodict;
 //	CAL_OptimizeNodes (audiohuffman);
-//	audiostarts = (long *)FP_SEG(&audiohead);
+//	audiostarts = (long *)(&audiohead);
 //#endif
 //
 ////

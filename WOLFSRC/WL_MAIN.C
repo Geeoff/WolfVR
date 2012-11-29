@@ -750,9 +750,9 @@ void SignonScreen (void)                        // VGA version
 //
 // reclaim the memory from the linked in signon screen
 //
-	segstart = FP_SEG(&introscn);
+	segstart = (&introscn);
 	seglength = 64000/16;
-	if (FP_OFF(&introscn))
+	if ((&introscn))
 	{
 		segstart++;
 		seglength--;

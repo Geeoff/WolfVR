@@ -300,8 +300,8 @@
 //	longword		dataofs,uselen;
 //
 //	uselen = length;
-//	datapage = FP_SEG(data) >> 12;
-//	dataofs = ((FP_SEG(data) & 0xfff) << 4) + FP_OFF(data);
+//	datapage = (data) >> 12;
+//	dataofs = (((data) & 0xfff) << 4) + (data);
 //	if (dataofs >= 0x10000)
 //	{
 //		datapage++;

@@ -370,10 +370,10 @@ boolean		mmerror;
 //	length=coreleft();
 //	start = (void *)(nearheap = malloc(length));
 //
-//	length -= 16-(FP_OFF(start)&15);
+//	length -= 16-((start)&15);
 //	length -= SAVENEARHEAP;
 //	seglength = length / 16;			// now in paragraphs
-//	segstart = FP_SEG(start)+(FP_OFF(start)+15)/16;
+//	segstart = (start)+((start)+15)/16;
 //	MML_UseSpace (segstart,seglength);
 //	mminfo.nearheap = length;
 //
@@ -382,10 +382,10 @@ boolean		mmerror;
 ////
 //	length=farcoreleft();
 //	start = farheap = farmalloc(length);
-//	length -= 16-(FP_OFF(start)&15);
+//	length -= 16-((start)&15);
 //	length -= SAVEFARHEAP;
 //	seglength = length / 16;			// now in paragraphs
-//	segstart = FP_SEG(start)+(FP_OFF(start)+15)/16;
+//	segstart = (start)+((start)+15)/16;
 //	MML_UseSpace (segstart,seglength);
 //	mminfo.farheap = length;
 //	mminfo.mainmem = mminfo.nearheap + mminfo.farheap;

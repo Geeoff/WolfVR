@@ -840,9 +840,9 @@
 //	{
 //		XMSProtectPage = pagenum;
 //		checkaddr = PML_GetAPageBuffer(pagenum,mainonly);
-//		if (FP_OFF(checkaddr))
+//		if ((checkaddr))
 //			Quit("PML_GetPageFromXMS: Non segment pointer");
-//		addr = (memptr)FP_SEG(checkaddr);
+//		addr = (memptr)(checkaddr);
 //		PML_CopyFromXMS(addr,page->xmsPage,page->length);
 //		XMSProtectPage = -1;
 //	}

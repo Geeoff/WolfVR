@@ -179,7 +179,7 @@
 ////
 //// mark the start of the code
 ////
-//		work->codeofs[src] = FP_OFF(code);
+//		work->codeofs[src] = (code);
 //
 ////
 //// compile some code if the source pixel generates any screen pixels
@@ -220,7 +220,7 @@
 ////
 //	*code++ = 0xcb;
 //
-//	totalsize = FP_OFF(code);
+//	totalsize = (code);
 //	MM_GetPtr (finalspot,totalsize);
 //	memcpy ((byte *)(*finalspot),(byte *)work,totalsize);
 //
