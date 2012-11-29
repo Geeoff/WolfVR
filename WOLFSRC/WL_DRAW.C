@@ -1410,7 +1410,7 @@ fixed FixedByFrac (fixed a, fixed b)
 }
 
 void	TransformActor (objtype *ob) {}
-void	BuildTables (void) {}
+//void	BuildTables (void) {}    // FIXME : Declared in WL_DRAW.H, but defined in WL_MAIN.C
 void	ClearScreen (void) {}
 
 int CalcRotate (objtype *ob)

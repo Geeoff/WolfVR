@@ -1049,10 +1049,12 @@ word IN_GetJoyButtonsDB(word joy)
 {
 	return 0;
 }
-byte* IN_GetScanName(ScanCode code)
-{
-	return NULL;
-}
+
+// FIXME : Declared in ID_IN.H, but defined in WL_MENU.C
+//byte* IN_GetScanName(ScanCode code)
+//{
+//	return NULL;
+//}
 
 byte IN_MouseButtons (void)
 {
