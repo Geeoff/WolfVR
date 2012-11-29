@@ -1391,13 +1391,13 @@ void PlayLoop (void)
 
 	do
 	{
-		if (virtualreality)
-		{
-			helmetangle = peek (0x40,0xf0);
-			player->angle += helmetangle;
-			if (player->angle >= ANGLES)
-				player->angle -= ANGLES;
-		}
+		//if (virtualreality)
+		//{
+		//	helmetangle = peek (0x40,0xf0);
+		//	player->angle += helmetangle;
+		//	if (player->angle >= ANGLES)
+		//		player->angle -= ANGLES;
+		//}
 
 
 		PollControls();
@@ -1461,12 +1461,12 @@ void PlayLoop (void)
 		}
 
 
-		if (virtualreality)
-		{
-			player->angle -= helmetangle;
-			if (player->angle < 0)
-				player->angle += ANGLES;
-		}
+		//if (virtualreality)
+		//{
+		//	player->angle -= helmetangle;
+		//	if (player->angle < 0)
+		//		player->angle += ANGLES;
+		//}
 
 	}while (!playstate && !startgame);
 

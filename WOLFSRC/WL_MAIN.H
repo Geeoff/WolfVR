@@ -28,7 +28,8 @@ extern	int			shootdelta;
 
 extern	int			dirangle[9];
 
-extern	boolean         startgame,loadedgame,virtualreality;
+extern	boolean         startgame,loadedgame;
+//boolean					virtualreality;
 extern	int		mouseadjustment;
 //
 // math tables

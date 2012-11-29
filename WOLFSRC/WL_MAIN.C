@@ -68,7 +68,8 @@ int                     minheightdiv;
 
 void            Quit (char *error);
 
-boolean         startgame,loadedgame,virtualreality;
+boolean         startgame,loadedgame;
+//boolean			virtualreality;
 int             mouseadjustment;
 
 char	configname[13]="CONFIG.";
@@ -738,13 +739,13 @@ void SignonScreen (void)                        // VGA version
 	VL_TestPaletteSet ();
 	VL_SetPalette (&gamepal);
 
-	if (!virtualreality)
-	{
-		VW_SetScreen(0x8000,0);
-		VL_MungePic (&introscn,320,200);
-		VL_MemToScreen (&introscn,320,200,0,0);
-		VW_SetScreen(0,0);
-	}
+	//if (!virtualreality)
+	//{
+	//	VW_SetScreen(0x8000,0);
+	//	VL_MungePic (&introscn,320,200);
+	//	VL_MemToScreen (&introscn,320,200,0,0);
+	//	VW_SetScreen(0,0);
+	//}
 
 //
 // reclaim the memory from the linked in signon screen
@@ -1155,10 +1156,10 @@ void InitGame (void)
 	int                     i,x,y;
 	unsigned        *blockstart;
 
-	if (MS_CheckParm ("virtual"))
-		virtualreality = true;
-	else
-		virtualreality = false;
+	//if (MS_CheckParm ("virtual"))
+	//	virtualreality = true;
+	//else
+	//	virtualreality = false;
 
 	MM_Startup ();                  // so the signon screen can be freed
 
@@ -1228,7 +1229,7 @@ void InitGame (void)
 //
 // draw intro screen stuff
 //
-	if (!virtualreality)
+	//if (!virtualreality)
 		IntroScreen ();
 
 //
@@ -1261,18 +1262,17 @@ close(profilehandle);
 // initialize variables
 //
 	InitRedShifts ();
-	if (!virtualreality)
+	//if (!virtualreality)
 		FinishSignon();
 
 	displayofs = PAGE1START;
 	bufferofs = PAGE2START;
 
-	if (virtualreality)
-	{
-		NoWait = true;
-		//geninterrupt(0x60);
-		// FIXME : What does this interrupt do?
-	}
+	//if (virtualreality)
+	//{
+	//	NoWait = true;
+	//	geninterrupt(0x60);
+	//}
 }
 
 //===========================================================================
