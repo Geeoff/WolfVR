@@ -61,3 +61,12 @@ boolean 	LoadTheGame(int file,int x,int y);
 boolean		SaveTheGame(int file,int x,int y);
 void 		ShowViewSize (int width);
 void		ShutdownId (void);
+
+// Wolf VR functions:
+
+void		InitWolf( );
+void		ShutdownWolf( );
+
+void		UpdateWolf( );
+boolean		WolfIsDone( );
+const char* GetWolfErrorString( );

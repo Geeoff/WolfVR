@@ -65,8 +65,9 @@ fixed           scale,maxslope;
 long            heightnumerator;
 int                     minheightdiv;
 
-
-void            Quit (char *error);
+boolean			wolfIsDone = false;
+const char*		errorStr = NULL;
+void			Quit (const char *error);
 
 boolean         startgame,loadedgame;
 //boolean			virtualreality;
@@ -1144,14 +1145,14 @@ void DoJukebox(void)
 /*
 ==========================
 =
-= InitGame
+= OldInitGame
 =
 = Load a few things right away
 =
 ==========================
 */
 
-void InitGame (void)
+void OldInitGame (void)
 {
 	int                     i,x,y;
 	unsigned        *blockstart;
@@ -1174,22 +1175,22 @@ void InitGame (void)
 	US_Startup ();
 
 
-#ifndef SPEAR
-	if (mminfo.mainmem < 235000L)
-#else
-	if (mminfo.mainmem < 257000L && !MS_CheckParm("debugmode"))
-#endif
-	{
-		memptr screen;
-
-		CA_CacheGrChunk (ERRORSCREEN);
-		screen = grsegs[ERRORSCREEN];
-		ShutdownId();
-		// FIXME : Cursor doesnt make sense for a non-console app.
-		//movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
-		//gotoxy (1,23);
-		exit(1);
-	}
+//#ifndef SPEAR
+//	if (mminfo.mainmem < 235000L)
+//#else
+//	if (mminfo.mainmem < 257000L && !MS_CheckParm("debugmode"))
+//#endif
+//	{
+//		memptr screen;
+//
+//		CA_CacheGrChunk (ERRORSCREEN);
+//		screen = grsegs[ERRORSCREEN];
+//		ShutdownId();
+//		// FIXME : Cursor doesnt make sense for a non-console app.
+//		//movedata ((unsigned)screen,7+7*160,0xb800,0,17*160);
+//		//gotoxy (1,23);
+//		exit(1);
+//	}
 
 
 //
@@ -1353,7 +1354,7 @@ void NewViewSize (int width)
 ==========================
 */
 
-void Quit (char *error)
+void Quit (const char *error)
 {
 	unsigned        finscreen;
 	memptr	screen;
@@ -1404,7 +1405,9 @@ void Quit (char *error)
 //asm	int	0x10
 	}
 
-	exit(0);
+	//exit(0);
+	wolfIsDone = true;
+	errorStr = error;
 }
 
 //===========================================================================
@@ -1585,50 +1588,165 @@ void    DemoLoop (void)
 
 //===========================================================================
 
+//
+// Wolf VR Functions
+//
 
-/*
-==========================
-=
-= main
-=
-==========================
-*/
-
-char    *nosprtxt[] = {"nospr",nil};
-
-int main (int argc, const char** argv)
+void InitWolf( )
 {
-	int     i;
+	#ifdef BETA
+		//
+		// THIS IS FOR BETA ONLY!
+		//
+		struct dosdate_t d;
 
-	_argc = argc;
-	_argv = argv;
-
-
-#ifdef BETA
-	//
-	// THIS IS FOR BETA ONLY!
-	//
-	struct dosdate_t d;
-
-	_dos_getdate(&d);
-	if (d.year > YEAR ||
-		(d.month >= MONTH && d.day >= DAY))
-	{
-	 printf("Sorry, BETA-TESTING is over. Thanks for you help.\n");
-	 exit(1);
-	}
-#endif
+		_dos_getdate(&d);
+		if (d.year > YEAR ||
+			(d.month >= MONTH && d.day >= DAY))
+		{
+		 printf("Sorry, BETA-TESTING is over. Thanks for you help.\n");
+		 exit(1);
+		}
+	#endif
 
 	CheckForEpisodes();
 
-	//Patch386 ();
+	OldInitGame( );
 
-	InitGame ();
+//	nsize = (long)40*1024;
+//	MM_GetPtr(&nullblock,nsize);
 
-	DemoLoop();
+#ifndef DEMOTEST
 
-	Quit("Demo loop exited???");
+	#ifndef UPLOAD
 
-	return 0;
+		#ifndef GOODTIMES
+		#ifndef SPEAR
+		#ifndef JAPAN
+		if (!NoWait)
+			NonShareware();
+		#endif
+		#else
+
+			#ifndef GOODTIMES
+			#ifndef SPEARDEMO
+			CopyProtection();
+			#endif
+			#endif
+
+		#endif
+		#endif
+	#endif
+
+	StartCPMusic(INTROSONG);
+
+#ifndef JAPAN
+	if (!NoWait)
+		PG13 ();
+#endif
+
+#endif
+}
+
+void ShutdownWolf( )
+{
+	// nothing
+}
+
+void UpdateWolf( )
+{
+	static int LastDemo;
+
+	while (!NoWait)
+	{
+//
+// title page
+//
+		MM_SortMem ();
+#ifndef DEMOTEST
+
+#ifdef SPEAR
+		CA_CacheGrChunk (TITLEPALETTE);
+
+		CA_CacheGrChunk (TITLE1PIC);
+		VWB_DrawPic (0,0,TITLE1PIC);
+		UNCACHEGRCHUNK (TITLE1PIC);
+
+		CA_CacheGrChunk (TITLE2PIC);
+		VWB_DrawPic (0,80,TITLE2PIC);
+		UNCACHEGRCHUNK (TITLE2PIC);
+		VW_UpdateScreen ();
+		VL_FadeIn(0,255,grsegs[TITLEPALETTE],30);
+
+		UNCACHEGRCHUNK (TITLEPALETTE);
+#else
+		CA_CacheScreen (TITLEPIC);
+		VW_UpdateScreen ();
+		VW_FadeIn();
+#endif
+		if (IN_UserInput(TickBase*15))
+			break;
+		VW_FadeOut();
+//
+// credits page
+//
+		CA_CacheScreen (CREDITSPIC);
+		VW_UpdateScreen();
+		VW_FadeIn ();
+		if (IN_UserInput(TickBase*10))
+			break;
+		VW_FadeOut ();
+//
+// high scores
+//
+		DrawHighScores ();
+		VW_UpdateScreen ();
+		VW_FadeIn ();
+
+		if (IN_UserInput(TickBase*10))
+			break;
+#endif
+//
+// demo
+//
+
+		#ifndef SPEARDEMO
+		PlayDemo (LastDemo++%4);
+		#else
+		PlayDemo (0);
+		#endif
+
+		if (playstate == ex_abort)
+			break;
+		StartCPMusic(INTROSONG);
+	}
+
+	VW_FadeOut ();
+
+#ifndef SPEAR
+	if (Keyboard[sc_Tab] && MS_CheckParm("goobers"))
+#else
+	if (Keyboard[sc_Tab] && MS_CheckParm("debugmode"))
+#endif
+		RecordDemo ();
+	else
+		US_ControlPanel (0);
+
+	if (startgame || loadedgame)
+	{
+		GameLoop ();
+		VW_FadeOut();
+		StartCPMusic(INTROSONG);
+	}
+}
+
+boolean WolfIsDone( )
+{
+	return wolfIsDone;
+}
+
+const char* GetWolfErrorString( )
+{
+	return errorStr;
 }
 

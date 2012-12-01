@@ -67,7 +67,12 @@ extern	char		signon;
 //	v1.0d1
 //
 
-typedef	enum	{false,true}	boolean;
+typedef enum	{False,True} boolean;
+#ifndef __cplusplus
+#define true	True
+#define false	False
+#endif
+
 typedef	unsigned	char		byte;
 typedef	unsigned	int			word;
 typedef	unsigned	long		longword;

@@ -115,7 +115,7 @@ extern	void	US_Startup(void),
 extern	boolean	US_UpdateCursor(void),
 				US_LineInput(int x,int y,char *buf,char *def,boolean escok,
 								int maxchars,int maxwidth);
-extern	int		US_CheckParm(char *parm,char **strings),
+extern	int		US_CheckParm(const char *parm,char **strings),
 				US_RndT(void);
 
 		void	USL_PrintInCenter(char *s,Rect r);

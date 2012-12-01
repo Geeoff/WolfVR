@@ -756,6 +756,7 @@
 
 void US_Startup(void)
 {
+	NoWait = true;
 }
 void US_Setup(void)
 {
@@ -835,7 +836,7 @@ boolean US_LineInput(int x,int y,char *buf,char *def,boolean escok,int maxchars,
 {
 	return false;
 }
-int US_CheckParm(char *parm,char **strings)
+int US_CheckParm(const char *parm,char **strings)
 {
 	return 0;
 }

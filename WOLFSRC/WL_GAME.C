@@ -1063,6 +1063,9 @@ void PlayDemo (int demonumber)
 	demoptr = (char *)demobuffer;
 #endif
 
+	if( demoptr == NULL )
+		return;
+
 	NewGame (1,0);
 	gamestate.mapon = *demoptr++;
 	gamestate.difficulty = gd_hard;

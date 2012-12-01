@@ -50,7 +50,6 @@ char endStrings[9][80]=
 };
 
 CP_iteminfo
-	MainItems={MENU_X,MENU_Y,10,STARTITEM,24},
 	SndItems={SM_X,SM_Y1,12,0,52},
 	LSItems={LSM_X,LSM_Y,10,0,24},
 	CtlItems={CTL_X,CTL_Y,6,-1,56},
@@ -98,9 +97,11 @@ MainMenu[]=
 	{1,STR_BD,0},
 	{1,STR_QT,0}
 #endif
-},
+};
 
-SndMenu[]=
+CP_iteminfo	MainItems = { MENU_X, MENU_Y, sizeof(MainMenu)/sizeof(MainMenu[0]), STARTITEM, 24 };
+
+CP_itemtype SndMenu[]=
 {
 #ifdef JAPAN
 	{1,"",0},
@@ -296,7 +297,7 @@ char SaveGameNames[10][32],SaveName[13]="SAVEGAM?.";
 // INPUT MANAGER SCANCODE TABLES
 //
 ////////////////////////////////////////////////////////////////////
-static byte
+static const char
 					*ScanNames[] =		// Scan code names with single chars
 					{
 	"?","?","1","2","3","4","5","6","7","8","9","0","-","+","?","?",
@@ -3125,7 +3126,7 @@ int HandleMenu(CP_iteminfo *item_i,CP_itemtype *items,void (*routine)(int w))
 	y=basey+which*13;
 
 	VWB_DrawPic(x,y,C_CURSOR1PIC);
-	SetTextColor(items+which,1);
+	SetMenuTextColor(items+which,1);
 	if (redrawitem)
 	{
 		PrintX=item_i->x+item_i->indent;
@@ -3360,7 +3361,7 @@ int HandleMenu(CP_iteminfo *item_i,CP_itemtype *items,void (*routine)(int w))
 void EraseGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int y,int which)
 {
 	VWB_Bar(x-1,y,25,16,BKGDCOLOR);
-	SetTextColor(items+which,0);
+	SetMenuTextColor(items+which,0);
 
 	PrintX=item_i->x+item_i->indent;
 	PrintY=item_i->y+which*13;
@@ -3390,7 +3391,7 @@ void DrawGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int *y,int which,int b
 	VWB_Bar(x-1,*y,25,16,BKGDCOLOR);
 	*y=basey+which*13;
 	VWB_DrawPic(x,*y,C_CURSOR1PIC);
-	SetTextColor(items+which,1);
+	SetMenuTextColor(items+which,1);
 
 	PrintX=item_i->x+item_i->indent;
 	PrintY=item_i->y+which*13;
@@ -3440,7 +3441,7 @@ void DrawMenu(CP_iteminfo *item_i,CP_itemtype *items)
 
 	for (i=0;i<item_i->amount;i++)
 	{
-		SetTextColor(items+i,which==i);
+		SetMenuTextColor(items+i,which==i);
 
 		PrintY=item_i->y+i*13;
 		if ((items+i)->active)
@@ -3462,7 +3463,7 @@ void DrawMenu(CP_iteminfo *item_i,CP_itemtype *items)
 // SET TEXT COLOR (HIGHLIGHT OR NO)
 //
 ////////////////////////////////////////////////////////////////////
-void SetTextColor(CP_itemtype *items,int hlight)
+void SetMenuTextColor(CP_itemtype *items,int hlight)
 {
 	if (hlight)
 		{SETFONTCOLOR(color_hlite[items->active],BKGDCOLOR);}
@@ -3496,6 +3497,9 @@ void WaitKeyUp(void)
 ////////////////////////////////////////////////////////////////////
 void ReadAnyControl(ControlInfo *ci)
 {
+	memset( ci, 0, sizeof(*ci) );
+	ci->dir = dir_None;
+
 	//int mouseactive=0;
 
 
@@ -3736,6 +3740,7 @@ void Message(char *string)
 	int h=0,w=0,mw=0,i,x,y,time;
 	fontstruct *font;
 
+	return; // FIXME
 
 	CA_CacheGrChunk (STARTFONT+1);
 	fontnumber=1;
