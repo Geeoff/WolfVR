@@ -496,7 +496,7 @@ boolean LoadTheGame(int file,int x,int y)
 			break;
 		GetNewActor ();
 	 // don't copy over the links
-		memcpy (new,&nullobj,sizeof(nullobj)-4);
+		memcpy (newObj,&nullobj,sizeof(nullobj)-4);
 	}
 
 

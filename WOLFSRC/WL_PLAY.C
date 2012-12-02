@@ -28,7 +28,7 @@ exit_t		playstate;
 
 int			DebugOk;
 
-objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
+objtype 	objlist[MAXACTORS],*newObj,*obj,*player,*lastobj,
 			*objfreelist,*killerobj;
 
 unsigned	farmapylookup[MAPSIZE];
@@ -900,7 +900,7 @@ void InitActorList (void)
 // give the player the first free spots
 //
 	GetNewActor ();
-	player = new;
+	player = newObj;
 
 }
 
@@ -925,16 +925,16 @@ void GetNewActor (void)
 	if (!objfreelist)
 		Quit ("GetNewActor: No free spots in objlist!");
 
-	new = objfreelist;
-	objfreelist = new->prev;
-	memset (new,0,sizeof(*new));
+	newObj = objfreelist;
+	objfreelist = newObj->prev;
+	memset (newObj,0,sizeof(*newObj));
 
 	if (lastobj)
-		lastobj->next = new;
-	new->prev = lastobj;	// new->next is allready NULL from memset
+		lastobj->next = newObj;
+	newObj->prev = lastobj;	// newObj->next is allready NULL from memset
 
-	new->active = false;
-	lastobj = new;
+	newObj->active = false;
+	lastobj = newObj;
 
 	objcount++;
 }

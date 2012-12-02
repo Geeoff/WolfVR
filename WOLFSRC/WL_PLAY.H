@@ -16,7 +16,7 @@ extern	exit_t		playstate;
 
 extern	boolean		madenoise;
 
-extern	objtype 	objlist[MAXACTORS],*new,*obj,*player,*lastobj,
+extern	objtype 	objlist[MAXACTORS],*newObj,*obj,*player,*lastobj,
 					*objfreelist,*killerobj;
 extern	statobj_t	statobjlist[MAXSTATS],*laststatobj;
 extern	doorobj_t	doorobjlist[MAXDOORS],*lastdoorobj;

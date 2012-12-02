@@ -81,21 +81,21 @@ boolean	CheckSight (objtype *ob);
 void SpawnNewObj (unsigned tilex, unsigned tiley, statetype *state)
 {
 	GetNewActor ();
-	new->state = state;
+	newObj->state = state;
 	if (state->tictime)
-		new->ticcount = US_RndT () % state->tictime;
+		newObj->ticcount = US_RndT () % state->tictime;
 	else
-		new->ticcount = 0;
+		newObj->ticcount = 0;
 
-	new->tilex = tilex;
-	new->tiley = tiley;
-	new->x = ((long)tilex<<TILESHIFT)+TILEGLOBAL/2;
-	new->y = ((long)tiley<<TILESHIFT)+TILEGLOBAL/2;
-	new->dir = nodir;
+	newObj->tilex = tilex;
+	newObj->tiley = tiley;
+	newObj->x = ((long)tilex<<TILESHIFT)+TILEGLOBAL/2;
+	newObj->y = ((long)tiley<<TILESHIFT)+TILEGLOBAL/2;
+	newObj->dir = nodir;
 
-	actorat[tilex][tiley] = new;
-	new->areanumber =
-		*(mapsegs[0] + farmapylookup[new->tiley]+new->tilex) - AREATILE;
+	actorat[tilex][tiley] = newObj;
+	newObj->areanumber =
+		*(mapsegs[0] + farmapylookup[newObj->tiley]+newObj->tilex) - AREATILE;
 }
 
 
