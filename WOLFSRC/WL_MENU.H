@@ -118,7 +118,7 @@ void CleanupControlPanel(void);
 void DrawMenu(CP_iteminfo *item_i,CP_itemtype *items);
 int  HandleMenu(CP_iteminfo *item_i,
 		CP_itemtype *items,
-		void (*routine)(int w));
+		int (*routine)(int w));
 void ClearMScreen(void);
 void DrawWindow(int x,int y,int w,int h,int wcolor);
 void DrawOutline(int x,int y,int w,int h,int color1,int color2);
@@ -135,7 +135,7 @@ void ShootSnd(void);
 void CheckSecretMissions(void);
 void BossKey(void);
 
-void DrawGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int *y,int which,int basey,void (*routine)(int w));
+void DrawGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int *y,int which,int basey,int (*routine)(int w));
 void DrawHalfStep(int x,int y);
 void EraseGun(CP_iteminfo *item_i,CP_itemtype *items,int x,int y,int which);
 void SetMenuTextColor(CP_itemtype *items,int hlight);
