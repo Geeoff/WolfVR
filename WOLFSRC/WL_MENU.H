@@ -99,7 +99,7 @@ typedef struct {
 typedef struct {
 		int active;
 		char string[36];
-		void (* routine)(int temp1);
+		int (* routine)(int temp1);
 		} CP_itemtype;
 
 typedef struct {
@@ -172,19 +172,19 @@ void TrackWhichGame(int w);
 void DrawNewGameDiff(int w);
 void FixupCustom(int w);
 
-void CP_NewGame(void);
-void CP_Sound(void);
+int  CP_NewGame(int temp);
+int  CP_Sound(int temp);
 int  CP_LoadGame(int quick);
 int  CP_SaveGame(int quick);
-void CP_Control(void);
-void CP_ChangeView(void);
+int  CP_Control(int temp);
+int  CP_ChangeView(int temp);
 void CP_ExitOptions(void);
 void CP_Quit(void);
-void CP_ViewScores(void);
+int  CP_ViewScores(int temp);
 int  CP_EndGame(void);
 int  CP_CheckQuick(unsigned scancode);
-void CustomControls(void);
-void MouseSensitivity(void);
+int  CustomControls(int temp);
+int  MouseSensitivity(int temp);
 
 void CheckForEpisodes(void);
 

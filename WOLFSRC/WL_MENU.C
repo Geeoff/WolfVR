@@ -368,15 +368,15 @@ void US_ControlPanel(byte scancode)
 			goto finishup;
 
 		case sc_F4:
-			CP_Sound();
+			CP_Sound(0);
 			goto finishup;
 
 		case sc_F5:
-			CP_ChangeView();
+			CP_ChangeView(0);
 			goto finishup;
 
 		case sc_F6:
-			CP_Control();
+			CP_Control(0);
 			goto finishup;
 
 		finishup:
@@ -893,9 +893,11 @@ int CP_EndGame(void)
 // VIEW THE HIGH SCORES
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ViewScores(void)
+int CP_ViewScores(int temp)
 {
 	fontnumber=0;
+
+	(void) temp;
 
 #ifdef SPEAR
 	UnCacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
@@ -918,6 +920,8 @@ void CP_ViewScores(void)
 	CacheLump (BACKDROP_LUMP_START,BACKDROP_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+
+	return 0;
 }
 
 
@@ -926,9 +930,11 @@ void CP_ViewScores(void)
 // START A NEW GAME
 //
 ////////////////////////////////////////////////////////////////////
-void CP_NewGame(void)
+int CP_NewGame(int temp)
 {
 	int which,episode;
+
+	(void) temp;
 
 #ifdef SPEAR
 	UnCacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
@@ -1042,6 +1048,8 @@ firstpart:
 	UnCacheLump (NEWGAME_LUMP_START,NEWGAME_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+
+	return 0;
 }
 
 
@@ -1135,10 +1143,11 @@ void DrawNewGameDiff(int w)
 // HANDLE SOUND MENU
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Sound(void)
+int CP_Sound(int temp)
 {
 	int which,i;
 
+	(void) temp;
 
 #ifdef SPEAR
 	UnCacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
@@ -1245,6 +1254,8 @@ void CP_Sound(void)
 	UnCacheLump (SOUND_LUMP_START,SOUND_LUMP_END);
 	CacheLump (OPTIONS_LUMP_START,OPTIONS_LUMP_END);
 #endif
+
+	return 0;
 }
 
 
@@ -1763,8 +1774,11 @@ int CalibrateJoystick(void)
 // DEFINE CONTROLS
 //
 ////////////////////////////////////////////////////////////////////
-void CP_Control(void)
+int CP_Control(int temp)
 {
+	(void) temp;
+	return 0;
+
 //	#define CTL_SPC	70
 //	enum {MOUSEENABLE,JOYENABLE,USEPORT2,PADENABLE,MOUSESENS,CUSTOMIZE};
 //	int i,which;
@@ -1888,11 +1902,12 @@ void DrawMouseSens(void)
 //
 // ADJUST MOUSE SENSITIVITY
 //
-void MouseSensitivity(void)
+int MouseSensitivity(int temp)
 {
 	ControlInfo ci;
 	int exit=0,oldMA;
 
+	(void) temp;
 
 	oldMA=mouseadjustment;
 	DrawMouseSens();
@@ -1959,6 +1974,8 @@ void MouseSensitivity(void)
 
 	WaitKeyUp();
 	MenuFadeOut();
+
+	return 0;
 }
 
 
@@ -2054,10 +2071,11 @@ char mbarray[4][3]={"b0","b1","b2","b3"},
 	   order[4]={RUN,OPEN,FIRE,STRAFE};
 
 
-void CustomControls(void)
+int CustomControls(int temp)
 {
  int which;
 
+ (void) temp;
 
  DrawCustomScreen();
  do
@@ -2086,6 +2104,8 @@ void CustomControls(void)
 
 
  MenuFadeOut();
+
+ return 0;
 }
 
 
@@ -2740,11 +2760,12 @@ void DrawCustKeys(int hilight)
 // CHANGE SCREEN VIEWING SIZE
 //
 ////////////////////////////////////////////////////////////////////
-void CP_ChangeView(void)
+int CP_ChangeView(int temp)
 {
 	int exit=0,oldview,newview;
 	ControlInfo ci;
 
+	(void) temp;
 
 	WindowX=WindowY=0;
 	WindowW=320;
@@ -2796,7 +2817,7 @@ void CP_ChangeView(void)
 			viewwidth=oldview*16;
 			SD_PlaySound(ESCPRESSEDSND);
 			MenuFadeOut();
-			return;
+			return 0;
 		}
 
 	} while(!exit);
@@ -2811,6 +2832,8 @@ void CP_ChangeView(void)
 
 	ShootSnd();
 	MenuFadeOut();
+
+	return 0;
 }
 
 
