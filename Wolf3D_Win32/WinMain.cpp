@@ -3,7 +3,11 @@
 
 extern "C" {
 #include "../WOLFSRC/WL_MAIN.H"
+#include "../D3D_DRAW/D3D_DRAW.h"
 }
+
+// Globals:
+HWND hWnd = NULL;
 
 // Strings:
 static const TCHAR* szTitle			= TEXT( "Wolfenstein VR" );
@@ -24,7 +28,7 @@ int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 	int res = 0;
 
 	// Perform application initialization:
-	HWND hWnd = CreateMainWindow( hInstance, nCmdShow );
+	hWnd = CreateMainWindow( hInstance, nCmdShow );
 	if( !hWnd )
 	{
 		return -1;
@@ -56,7 +60,8 @@ int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 			break;
 
 		// Update game.
-		UpdateWolf( );
+		//UpdateWolf( );
+		D3D_Test( );
 
 		// Quit if game is down.
 		if( WolfIsDone() )

@@ -2,6 +2,7 @@
 
 #include <conio.h>
 #include "WL_DEF.H"
+#include "../D3D_DRAW/D3D_DRAW.H"
 #pragma hdrstop
 
 
@@ -1594,6 +1595,9 @@ void    DemoLoop (void)
 
 void InitWolf( )
 {
+	// Init graphics
+	D3D_Init( );
+
 	#ifdef BETA
 		//
 		// THIS IS FOR BETA ONLY!
@@ -1650,7 +1654,7 @@ void InitWolf( )
 
 void ShutdownWolf( )
 {
-	// nothing
+	D3D_Shutdown( );
 }
 
 void UpdateWolf( )
